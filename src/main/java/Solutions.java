@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Stack;
 
 public class Solutions {
@@ -32,6 +33,27 @@ public class Solutions {
             stack.push(new int[]{t, i});
         }
         return res;
+    }
+
+    public int carFleet(int target, int[] position, int[] speed) {
+        int[][] pairs = new int[position.length][2];
+        Stack<Double> stack = new Stack<>();
+
+        //populate the pair [position, speed]
+        for (int i = 0; i<position.length; i++) {
+            pairs[i][0] = position[i];
+            pairs[i][1] = speed[i];
+        }
+        //sort the pair array in decreasing order of position value
+        Arrays.sort(pairs, (a, b) -> Integer.compare(b[0], a[0]));
+
+        for (int[] pair : pairs) {
+            stack.push((double)(target-pair[0])/pair[1]);
+            if (stack.size() >= 2 && stack.peek() <= stack.get(stack.size()-2)) {
+                stack.pop();
+            }
+        }
+        return stack.size();
     }
 
     public boolean alphaNum(char c) {
