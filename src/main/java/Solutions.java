@@ -56,6 +56,28 @@ public class Solutions {
         return stack.size();
     }
 
+    public int largestRectangleArea(int[] height) {
+        int maxArea = 0;
+        Stack<int[]> stack = new Stack<>();
+
+        for (int i = 0; i<height.length; i++) {
+            int currIndex = i;
+            while (!stack.empty() && stack.peek()[1] > height[i]) {
+                int[] pair = stack.pop();
+                int area = (i-pair[0]) * pair[1];
+                maxArea = Math.max(maxArea, area);
+                currIndex = pair[0];
+            }
+            stack.push(new int[]{currIndex, height[i]});
+        }
+
+        for (int[] pair : stack) {
+            int area = (height.length - pair[0]) * pair[1];
+            maxArea = Math.max(maxArea, area);
+        }
+        return maxArea;
+    }
+
     public boolean alphaNum(char c) {
         return (c >= 'A' && c <= 'Z' ||
                 c >= 'a' && c <= 'z' ||

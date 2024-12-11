@@ -11,6 +11,10 @@ public class TestMain {
 
         //day2 [stack]
         //https://leetcode.com/problems/car-fleet/
-        System.out.println(solutions.carFleet(12, new int[]{10, 8, 0, 5, 3}, new int[]{2, 4, 1, 1, 3}));
+        //System.out.println(solutions.carFleet(12, new int[]{10, 8, 0, 5, 3}, new int[]{2, 4, 1, 1, 3}));
+
+        //day3 [stack]
+        //https://leetcode.com/problems/largest-rectangle-in-histogram/description/
+        System.out.println(solutions.largestRectangleArea(new int[]{2, 1, 5, 6, 2, 3}));
     }
 }
