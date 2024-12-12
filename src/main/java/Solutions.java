@@ -78,6 +78,26 @@ public class Solutions {
         return maxArea;
     }
 
+    public int binarySearch(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length-1;
+        int mid;
+        int res = -1;
+
+        while (start <= end) {
+            mid = (start + end)/2;
+            if (target < nums[mid]) {
+                end = mid-1;
+            } else if (target > nums[mid]) {
+                start = mid+1;
+            } else {
+                res = mid;
+                break;
+            }
+        }
+        return res;
+    }
+
     public boolean alphaNum(char c) {
         return (c >= 'A' && c <= 'Z' ||
                 c >= 'a' && c <= 'z' ||
