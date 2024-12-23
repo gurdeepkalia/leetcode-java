@@ -27,13 +27,18 @@ public class TestMain {
 
         //day7 [binary search] - 20/12/2024
         //https://leetcode.com/problems/time-based-key-value-store/
+        /*
         TimeMap timeMap = new TimeMap();
         timeMap.set("alice", "happy", 1);  // store the key "alice" and value "happy" along with timestamp = 1.
         System.out.println(timeMap.get("alice", 1));          // return "happy"
         System.out.println(timeMap.get("alice", 2));           // return "happy", there is no value stored for timestamp 2, thus we return the value at timestamp 1.
         timeMap.set("alice", "sad", 3);    // store the key "alice" and value "sad" along with timestamp = 3.
         System.out.println(timeMap.get("alice", 3));           // return "sad"
+        */
 
+        //day8 [sliding window] - 23/12/2024
+        //https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+        System.out.println(solutions.maxProfit(new int[]{7,1,5,3,6,4}));
 
     }
 }

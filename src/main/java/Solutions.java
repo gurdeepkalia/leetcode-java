@@ -20,6 +20,12 @@ public class Solutions {
         return true;
     }
 
+    public boolean alphaNum(char c) {
+        return (c >= 'A' && c <= 'Z' ||
+                c >= 'a' && c <= 'z' ||
+                c >= '0' && c <= '9');
+    }
+
     public int[] dailyTemperatures(int[] temperatures) {
         int[] res = new int[temperatures.length];
         Stack<int[]> stack = new Stack<>();
@@ -114,9 +120,14 @@ public class Solutions {
         return nums[l];
     }
 
-    public boolean alphaNum(char c) {
-        return (c >= 'A' && c <= 'Z' ||
-                c >= 'a' && c <= 'z' ||
-                c >= '0' && c <= '9');
+    public int maxProfit(int[] prices) {
+        //[7,1,5,3,6,4]
+        int min = prices[0];
+        int profit = 0;
+        for (int price : prices) {
+            min = Math.min(min, price);
+            profit = Math.max(profit, price - min);
+        }
+        return profit;
     }
 }
