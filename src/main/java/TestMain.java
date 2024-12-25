@@ -38,7 +38,10 @@ public class TestMain {
 
         //day8 [sliding window] - 23/12/2024
         //https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
-        System.out.println(solutions.maxProfit(new int[]{7,1,5,3,6,4}));
+        //System.out.println(solutions.maxProfit(new int[]{7,1,5,3,6,4}));
 
+        //day9 [sliding window] - 25/12/2024
+        //https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
+        System.out.println(solutions.lengthOfLongestSubString("abc"));
     }
 }

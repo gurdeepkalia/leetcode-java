@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 
 public class Solutions {
@@ -129,5 +131,25 @@ public class Solutions {
             profit = Math.max(profit, price - min);
         }
         return profit;
+    }
+
+    public int lengthOfLongestSubString(String s) {
+        int start = 0;
+        int maxLength = 0;
+        Set<Character> set = new HashSet<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (set.contains(c)) {
+                while (s.charAt(start) != c) {
+                    set.remove(s.charAt(start));
+                    start++;
+                }
+                start++;
+            } else {
+                set.add(c);
+                maxLength = Math.max(maxLength, set.size());
+            }
+        }
+        return maxLength;
     }
 }
