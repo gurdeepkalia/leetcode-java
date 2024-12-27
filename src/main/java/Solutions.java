@@ -1,7 +1,4 @@
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 public class Solutions {
     public boolean isPalindrome(String s) {
@@ -151,5 +148,32 @@ public class Solutions {
             }
         }
         return maxLength;
+    }
+
+    public int characterReplacement(String s, int k) {
+        Map<Character, Integer> freqMap = new HashMap<>();
+        freqMap.put(s.charAt(0), 1);
+        int maxFreq = 1;
+        int windowSize = 0;
+        int res = 0;
+        int l=0,r=0;
+        while (r < s.length()) {
+            windowSize = r-l+1;
+            //valid window
+            if (windowSize - maxFreq <= k) {
+                r++;
+                if (r < s.length()) {
+                    freqMap.put(s.charAt(r), freqMap.computeIfAbsent(s.charAt(r), key -> 0) + 1);
+                    maxFreq = Math.max(maxFreq, freqMap.get(s.charAt(r)));
+                }
+                res = Math.max(res, windowSize);
+
+            } else {
+                freqMap.put(s.charAt(l), freqMap.get(s.charAt(l)) - 1);
+                maxFreq = Collections.max(freqMap.values());
+                l++;
+            }
+        }
+        return res;
     }
 }

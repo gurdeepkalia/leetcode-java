@@ -42,6 +42,10 @@ public class TestMain {
 
         //day9 [sliding window] - 25/12/2024
         //https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
-        System.out.println(solutions.lengthOfLongestSubString("abc"));
+        //System.out.println(solutions.lengthOfLongestSubString("abc"));
+
+        //day10 [sliding window] - 27/12/2024
+        //https://leetcode.com/problems/longest-repeating-character-replacement/
+        System.out.println(solutions.characterReplacement("ABAB", 2));
     }
 }
