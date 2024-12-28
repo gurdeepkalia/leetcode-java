@@ -46,6 +46,10 @@ public class TestMain {
 
         //day10 [sliding window] - 27/12/2024
         //https://leetcode.com/problems/longest-repeating-character-replacement/
-        System.out.println(solutions.characterReplacement("ABAB", 2));
+        // System.out.println(solutions.characterReplacement("ABAB", 2));
+
+        //day11 [sliding window] - 28/12/2024
+        //https://leetcode.com/problems/permutation-in-string/description/
+        System.out.println(solutions.checkInclusion("abc", "bbbca"));
     }
 }

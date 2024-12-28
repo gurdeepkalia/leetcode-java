@@ -176,4 +176,66 @@ public class Solutions {
         }
         return res;
     }
+
+    public boolean checkInclusion(String s1, String s2) {
+        //"ab", "eidbaooo"
+        if (s1.length() > s2.length()) return false;
+
+        // Initialize maps for frequency counts
+        Map<Character, Integer> s1Map = new HashMap<>();
+        Map<Character, Integer> s2Map = new HashMap<>();
+        for (char c = 'a'; c <= 'z'; c++) {
+            s1Map.put(c, 0);
+            s2Map.put(c, 0);
+        }
+
+        // Populate s1Map with s1 character counts
+        for (char c : s1.toCharArray()) {
+            s1Map.put(c, s1Map.get(c) + 1);
+        }
+
+        // Initialize s2Map for the first window in s2
+        int l = 0, r = 0, matches = 0;
+        for (; r < s1.length(); r++) {
+            char c = s2.charAt(r);
+            s2Map.put(c, s2Map.get(c) + 1);
+        }
+
+        // Calculate initial matches
+        for (char c = 'a'; c <= 'z'; c++) {
+            if (s1Map.get(c).equals(s2Map.get(c))) {
+                matches++;
+            }
+        }
+
+        // Start sliding window
+        while (r < s2.length()) {
+            if (matches == 26) return true; // All characters match
+
+            // Add new character to the window
+            char rightChar = s2.charAt(r);
+            s2Map.put(rightChar, s2Map.get(rightChar) + 1);
+            if (s1Map.get(rightChar).equals(s2Map.get(rightChar))) {
+                matches++;
+            } else if (s1Map.get(rightChar).equals(s2Map.get(rightChar) - 1)) {
+                matches--;
+            }
+
+            // Remove the old character from the window
+            char leftChar = s2.charAt(l);
+            s2Map.put(leftChar, s2Map.get(leftChar) - 1);
+            if (s1Map.get(leftChar).equals(s2Map.get(leftChar))) {
+                matches++;
+            } else if (s1Map.get(leftChar).equals(s2Map.get(leftChar) + 1)) {
+                matches--;
+            }
+
+            // Move the window
+            r++;
+            l++;
+        }
+
+        // Check the final window
+        return matches == 26;
+    }
 }
